@@ -2,4 +2,4 @@
 
 Обновление каждую пятницу.
 
-[Реестр на сайта Минюста РФ](https://minjust.gov.ru/ru/activity/directions/998/)
+[Реестр на сайте Минюста РФ](https://minjust.gov.ru/ru/activity/directions/998/)
