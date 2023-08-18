@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Реестр иноагентов</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/gridjs/6.0.6/theme/mermaid.min.css" rel="stylesheet">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gridjs/6.0.6/gridjs.production.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="https://unpkg.com/gridjs@6.0.6/l10n/dist/l10n.umd.js"></script>
+	</head>
+	<body>
+		<div id="card" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalLabel">Запись №<span id="number"></span></h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+					</div>
+					<div class="modal-body">
+						<p><b>Полное наименование:</b> <span id="name"></span></p>
+						<p><b>Дата рождения:</b> <span id="dob"></span></p>
+						<p><b>ОГРН:</b> <span id="ogrn"></span></p>
+						<p><b>ИНН:</b> <span id="inn"></span></p>
+						<p><b>Регистрационный номер:</b> <span id="regNum"></span></p>
+						<p><b>СНИЛС:</b> <span id="snils"></span></p>
+						<p><b>Место нахождения:</b> <span id="address"></span></p>
+						<p><b>Информационный ресурс:</b> <span id="resources"></span></p>
+						<p><b>Участники:</b> <span id="members"></span></p>
+						<p><b>Основание для включения:</b> <span id="law"></span></p>
+						<p><b>Дата включения:</b> <span id="dateIn"></span></p>
+						<p><b>Дата исключения:</b> <span id="dateOut"></span></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="navbar bg-body-tertiary">
+			<div class="container-fluid">
+				<a class="navbar-brand">
+				<span class="navbar-brand mb-0 h1"><img src="https://habrastorage.org/webt/a_/xt/c_/a_xtc_o6zp8oqpzkamwvuzlayfq.jpeg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top"> Реестр иноагентов</span>
+			</div>
+		</nav>
+		<div class="container">
+			<br>
+			<div class="row">
+				<center>
+					<div id="reestr"></div>
+				</center>
+			</div>
+		</div>
+		<footer>
+			<center>
+				<br>
+				&copy; 2023, li0ard, Министерство Юстиции РФ
+				<br>
+				<br>
+			</center>
+		</footer>
+		<script type="text/javascript">
+			const grid = new gridjs.Grid({
+				columns: [
+					{
+						"id": "id",
+						"name": "№"
+					},
+					{
+						"id": "fullName",
+						"name": "Наименование"
+					},
+					{
+						"id": "dob",
+						"name": "Дата рождения",
+						hidden: true
+					},
+					{
+						"id": "ogrn",
+						"name": "ОГРН",
+						hidden: true
+					},
+					{
+						"id": "inn",
+						"name": "ИНН",
+						hidden: true
+					},
+					{
+						"id": "regNum",
+						"name": "Регистрационный номер",
+						hidden: true
+					},
+					{
+						"id": "snils",
+						"name": "СНИЛС",
+						hidden: true
+					},
+					{
+						"id": "address",
+						"name": "Адрес",
+						hidden: true
+					},
+					{
+						"id": "resources",
+						"name": "Информационный ресурс",
+						hidden: true
+					},
+					{
+						"id": "members",
+						"name": "Участники",
+						hidden: true
+					},
+					{
+						"id": "law",
+						"name": "Основание для включения",
+						hidden: true
+					},
+
+					{
+						"id": "dateIn",
+						"name": "Дата включения",
+						hidden: true
+					},
+					{
+						"id": "dateOut",
+						"name": "Дата исключения",
+						hidden: true
+					},
+					{
+						"id": "actions",
+						"name": "",
+						formatter: (cell, row) => {
+							return gridjs.h('button', {
+								className: "btn btn-primary",
+								onClick: () => {
+									let data = row.cells
+									document.getElementById("number").textContent = data[0].data
+									document.getElementById("name").textContent = data[1].data
+									document.getElementById("dob").textContent = data[2].data
+									document.getElementById("ogrn").textContent = data[3].data
+									document.getElementById("inn").textContent = data[4].data
+									document.getElementById("regNum").textContent = data[5].data
+									document.getElementById("snils").textContent = data[6].data
+									document.getElementById("address").textContent = data[7].data
+									document.getElementById("resources").textContent = data[8].data
+									document.getElementById("members").textContent = data[9].data
+									document.getElementById("law").textContent = data[10].data
+									document.getElementById("dateIn").textContent = data[11].data
+									document.getElementById("dateOut").textContent = data[12].data
+									new bootstrap.Modal("#card").show()
+								}
+							}, 'Просмотр')
+						}
+					}
+				],
+				pagination: {
+					limit: 10
+				},
+				fixedHeader: true,
+				search: {
+					ignoreHiddenColumns: false,
+				},
+				language: gridjs.l10n.ruRU,
+				server: {
+					url: `https://raw.githubusercontent.com/li0ard/registry-of-foreign-agents/main/registry.json`,
+					then: data => data
+				}
+			})
+			grid.render(document.getElementById("reestr"));
+		</script>
+	</body>
+</html>
