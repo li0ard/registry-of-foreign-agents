@@ -31,6 +31,8 @@
 						<p><b>Основание для включения:</b> <span id="law"></span></p>
 						<p><b>Дата включения:</b> <span id="dateIn"></span></p>
 						<p><b>Дата исключения:</b> <span id="dateOut"></span></p>
+						<br>
+						<p><b>Сноска (для сайтов и т.п): <code><span id="msg"></span></code></b></p>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
@@ -54,6 +56,8 @@
 		</div>
 		<footer>
 			<center>
+				<br>
+				<a href="https://minjust.gov.ru/ru/activity/directions/998/">Реестр на сайте Минюста РФ</a>&nbsp;<a href="https://minjust.gov.ru/ru/events/list/?words=О+реестре+иностранных+агентов&start_date=&end_date=&page=1">Поиск причины внесения в пресс-релизах</a>
 				<br>
 				&copy; 2023, li0ard, Министерство Юстиции РФ
 				<br>
@@ -148,6 +152,7 @@
 									document.getElementById("law").textContent = data[10].data
 									document.getElementById("dateIn").textContent = data[11].data
 									document.getElementById("dateOut").textContent = data[12].data
+									document.getElementById("msg").textContent = `18+ НАСТОЯЩИЙ МАТЕРИАЛ (ИНФОРМАЦИЯ) ПРОИЗВЕДЕН И (ИЛИ) РАСПРОСТРАНЕН ИНОСТРАННЫМ АГЕНТОМ ${data[1].data.toUpperCase()}, ЛИБО КАСАЕТСЯ ДЕЯТЕЛЬНОСТИ ИНОСТРАННОГО АГЕНТА ${data[1].data.toUpperCase()}.`
 									new bootstrap.Modal("#card").show()
 								}
 							}, 'Просмотр')
