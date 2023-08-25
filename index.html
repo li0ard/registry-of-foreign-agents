@@ -9,6 +9,16 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gridjs/6.0.6/gridjs.production.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="https://unpkg.com/gridjs@6.0.6/l10n/dist/l10n.umd.js"></script>
+		<style>
+			@media print {
+				.noprint {
+					display: none;
+				}
+				.print {
+					display: block;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<div id="card" class="modal fade">
@@ -22,7 +32,7 @@
 						<p><b>Полное наименование:</b> <span id="name"></span></p>
 						<p><b>Дата рождения:</b> <span id="dob"></span></p>
 						<p><b>ОГРН:</b> <span id="ogrn"></span></p>
-						<p><b>ИНН:</b> <span id="inn"></span></p>
+						<p><b>ИНН:</b> <a id="inn_link"><span id="inn"></span></a></p>
 						<p><b>Регистрационный номер:</b> <span id="regNum"></span></p>
 						<p><b>СНИЛС:</b> <span id="snils"></span></p>
 						<p><b>Место нахождения:</b> <span id="address"></span></p>
@@ -34,19 +44,26 @@
 						<br>
 						<p><b>Сноска (для сайтов и т.п): <code><span id="msg"></span></code></b></p>
 					</div>
-					<div class="modal-footer">
+					<div class="noprint modal-footer">
+						<button type="button" onclick="window.print()" class="btn btn-primary">Печать</button>
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		<nav class="navbar bg-body-tertiary">
+		<nav class="navbar bg-body-tertiary noprint">
 			<div class="container-fluid">
-				<a class="navbar-brand">
 				<span class="navbar-brand mb-0 h1"><img src="https://habrastorage.org/webt/a_/xt/c_/a_xtc_o6zp8oqpzkamwvuzlayfq.jpeg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top"> Реестр иноагентов</span>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Главная</a></li>
+						<li class="nav-item"><a class="nav-link" href="stats.html">Статистика</a></li>
+					</ul>
+				</div>
 			</div>
 		</nav>
-		<div class="container">
+		<div class="container noprint">
 			<br>
 			<div class="row">
 				<center>
@@ -54,7 +71,7 @@
 				</center>
 			</div>
 		</div>
-		<footer>
+		<footer class="noprint">
 			<center>
 				<br>
 				<a href="https://minjust.gov.ru/ru/activity/directions/998/">Реестр на сайте Минюста РФ</a>&nbsp;<a href="https://minjust.gov.ru/ru/events/list/?words=О+реестре+иностранных+агентов&start_date=&end_date=&page=1">Поиск причины внесения в пресс-релизах</a>
@@ -144,6 +161,7 @@
 									document.getElementById("dob").textContent = data[2].data
 									document.getElementById("ogrn").textContent = data[3].data
 									document.getElementById("inn").textContent = data[4].data
+									document.getElementById("inn_link").setAttribute("href", `https://egrul.itsoft.ru/${data[4].data.split(" ").join("")}`)
 									document.getElementById("regNum").textContent = data[5].data
 									document.getElementById("snils").textContent = data[6].data
 									document.getElementById("address").textContent = data[7].data
