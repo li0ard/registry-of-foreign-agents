@@ -1,7 +1,8 @@
 {
   "name": "Реестр иноагентов",
   "description": "Просмотр и статистика реестра иноагентов Министерства Юстиции РФ",
-  "start_url": "/",
+  "short_name": "Реестр иноагентов",
+  "start_url": "/registry-of-foreign-agents",
   "lang": "ru",
   "theme_color": "#eeeeee",
   "display": "standalone",
@@ -9,6 +10,13 @@
     {
       "src": "https://hsto.org/webt/a_/xt/c_/a_xtc_o6zp8oqpzkamwvuzlayfq.jpeg",
       "sizes": "256x256",
+      "type": "image/jpeg"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://habrastorage.org/webt/e0/ct/be/e0ctbez13-1onr6kmrjbswcpg4e.png",
+      "sizes": "1292x656",
       "type": "image/jpeg"
     }
   ]
