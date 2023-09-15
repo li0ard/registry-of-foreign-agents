@@ -1,0 +1,15 @@
+{
+  "name": "Реестр иноагентов",
+  "description": "Просмотр и статистика реестра иноагентов Министерства Юстиции РФ",
+  "start_url": "/",
+  "lang": "ru",
+  "theme_color": "#eeeeee",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "https://hsto.org/webt/a_/xt/c_/a_xtc_o6zp8oqpzkamwvuzlayfq.jpeg",
+      "sizes": "256x256",
+      "type": "image/jpeg"
+    }
+  ]
+}
